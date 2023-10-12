@@ -9,8 +9,6 @@ versions:
     - /\.tar\.xz/
 build:
   dependencies:
-    tea.xyz/gx/cc: c99
-    tea.xyz/gx/make: '*'
     freedesktop.org/pkg-config: '*'
     pagure.io/xmlto: '*'
     libexpat.github.io: '*'
@@ -46,7 +44,7 @@ provides:
   - bin/dbus-uuidgen
 test:
   dependencies:
-    python.org: ^3.11
+    python.org: ~3.11
     freedesktop.org/pkg-config: '*'
   script:
     - dbus-daemon --version | grep {{version}}

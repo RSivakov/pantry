@@ -11,8 +11,6 @@ dependencies:
   gnome.org/libxml2: '*'
 build:
   dependencies:
-    tea.xyz/gx/cc: c99
-    tea.xyz/gx/make: '*'
     gnu.org/bison: '*'
     mesonbuild.com: '*'
     ninja-build.org: '*'
@@ -31,11 +29,14 @@ build:
       - -Denable-docs=false
       - -Dxkb-config-root={{deps.freedesktop.org/XKeyboardConfig.prefix}}/share/X11/xkb
       - -Dx-locale-root={{deps.freedesktop.org/XKeyboardConfig.prefix}}/share/locale
+    darwin:
+      MESON_ARGS:
+        # has invalid attributes for darwin linking
+        - -Denable-x11=false
 provides:
   - bin/xkbcli
 test:
   dependencies:
-    tea.xyz/gx/cc: c99
     freedesktop.org/pkg-config: '*'
   script:
     - pkg-config --modversion xkbcommon | grep {{version}}
