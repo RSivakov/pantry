@@ -107,7 +107,7 @@ jobs:
       - uses: pkgxdev/brewkit/actions/setup-brewkit@v0
         timeout-minutes: 10
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ inputs.platform }}
 
@@ -143,7 +143,7 @@ jobs:
     if: startsWith(github.ref, 'refs/pull/') && github.repository_owner == 'pkgxdev' && needs.test.outputs.HAS_SECRETS == 'true' && needs.get-platform.outputs.available != ''
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ inputs.platform }}
 
